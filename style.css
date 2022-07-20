@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.game-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+#main{
+    display: grid;
+    grid-template-columns: repeat(20,30px);
+    grid-template-rows: repeat(20,30px);
+}
+.block{
+    display: flex;
+    cursor: pointer;
+}
