@@ -48,4 +48,23 @@
     font-size: 3vw;
     border-radius: 2.5vw;
     padding:0.75vw;
+    margin: 1vw;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+}
+
+.updown{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#up,#down,#left,#right{
+    font-size: 3vw;
+    padding:1vw;
+    margin: 0.5vw;
 }

@@ -2,6 +2,7 @@
 let countwin = 0;
 let countloss = 0;
 let size = 3;
+let currid=1;
 document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + 40 / size + "vw)";
 document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + 40 / size + "vw)";
 for (let i = 1; i <= size * size; i++) {
@@ -116,6 +117,8 @@ const reset = () => {
             break;
         }
     }
+    currid=1;
+    document.getElementById(currid.toString()).classList.add("color");
 }
 
 
@@ -182,8 +185,94 @@ document.getElementById("check").addEventListener('click', () => {
     reset();
 })
 
+const up=()=>{
+    if(currid-size>0 && document.getElementById(currid.toString()).style.borderTop==""){
+        if(document.getElementById((currid-size).toString()).classList.contains("color")){
+            document.getElementById((currid).toString()).classList.remove("color");
+            currid-=size;
+        }
+        else{
+            currid-=size;
+            document.getElementById((currid).toString()).classList.add("color");
+        }
+    }
+}
+const down=()=>{
+    if(currid+size<=size*size && document.getElementById(currid.toString()).style.borderBottom==""){
+        if(document.getElementById((currid+size).toString()).classList.contains("color")){
+            document.getElementById((currid).toString()).classList.remove("color");
+            currid+=size;
+        }
+        else{
+            currid+=size;
+            document.getElementById((currid).toString()).classList.add("color");
+        }
+    }
+}
+const left=()=>{
+    if(currid%size!=1 && document.getElementById(currid.toString()).style.borderLeft==""){
+        if(document.getElementById((currid-1).toString()).classList.contains("color")){
+            document.getElementById((currid).toString()).classList.remove("color");
+            currid-=1;
+        }
+        else{
+            currid-=1;
+            document.getElementById((currid).toString()).classList.add("color");
+        }
+    }
+}
+const right=()=>{
+    if(currid%size!=0 && document.getElementById(currid.toString()).style.borderRight==""){
+        if(document.getElementById((currid+1).toString()).classList.contains("color")){
+            document.getElementById((currid).toString()).classList.remove("color");
+            currid+=1;
+        }
+        else{
+            currid+=1;
+            document.getElementById((currid).toString()).classList.add("color");
+        }
+    }
+}
+
+window.addEventListener('keydown',(event)=>{
+    let code=event.code;
+    if(code=="ArrowRight"){
+        right();
+    }
+    if(code=="ArrowLeft"){
+        left();
+    }
+    if(code=="ArrowUp"){
+        up();
+    }
+    if(code=="ArrowDown"){
+        down();
+    }
+    if(code=="Enter"){
+        document.getElementById("check").click();
+    }
+    if(code=="Backspace"){
+        document.getElementById("reset").click();
+    }
+})
+
+document.getElementById("left").addEventListener('click', () => {
+    left();
+})
+document.getElementById("right").addEventListener('click', () => {
+    right();
+})
+document.getElementById("up").addEventListener('click', () => {
+    up();
+})
+document.getElementById("down").addEventListener('click', () => {
+    down();
+})
+
 document.getElementById("reset").addEventListener('click', () => {
     for (let i = 1; i <= size * size; i++) {
         document.getElementById(i.toString()).classList.remove("color");
     }
+    currid=1;
+    document.getElementById(currid.toString()).classList.add("color");
 })
