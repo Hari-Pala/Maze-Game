@@ -3,8 +3,25 @@ let countwin = 0;
 let countloss = 0;
 let size = 3;
 let currid=1;
-document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + 40 / size + "vw)";
-document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + 40 / size + "vw)";
+let width=screen.width;
+let height=screen.height;
+console.log(height);
+console.log(width);
+let size1;
+let size2;
+if(height>=(1.5*width )){
+    size1=80;
+    size2=78;
+    size3=3;
+}
+else{
+    size1=40;
+    size2=39;
+    size3=10;
+}
+document.getElementsByClassName("buttons").style.fontSize=size3+"vw";
+document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + size1 / size + "vw)";
+document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + size1 / size + "vw)";
 for (let i = 1; i <= size * size; i++) {
     document.getElementById("main").innerHTML += '<div class="block" id="' + i + '"></div>';
 }
@@ -30,8 +47,8 @@ const reset = () => {
 
     document.getElementById((1).toString()).innerText = "S";
     document.getElementById((size * size).toString()).innerText = "E";
-    document.getElementById((1).toString()).style.fontSize = 39 / size + "vw";
-    document.getElementById((size * size).toString()).style.fontSize = 39 / size + "vw";
+    document.getElementById((1).toString()).style.fontSize = size2 / size + "vw";
+    document.getElementById((size * size).toString()).style.fontSize = size2 / size + "vw";
 
     checkmat[(blockid - 1) % size][(blockid - 1) / size] = 1;
 
