@@ -9,9 +9,9 @@ document.getElementById("up").style.fontSize=(width*1.5>height ? 3:15)+"vw";
 document.getElementById("down").style.fontSize=(width*1.5>height ? 3:15)+"vw";
 document.getElementById("right").style.fontSize=(width*1.5>height ? 3:15)+"vw";
 document.getElementById("left").style.fontSize=(width*1.5>height ? 3:15)+"vw";
-document.getElementById("extra").style.fontSize=(width*1.5>height ? 3:10)+"vw";
-document.getElementById("reset").style.fontSize=(width*1.5>height ? 3:10)+"vw";
-document.getElementById("check").style.fontSize=(width*1.5>height ? 3:10)+"vw";
+document.getElementById("extra").style.fontSize=(width*1.5>height ? 3:8)+"vw";
+document.getElementById("reset").style.fontSize=(width*1.5>height ? 3:5)+"vw";
+document.getElementById("check").style.fontSize=(width*1.5>height ? 3:5)+"vw";
 document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
 document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
 for (let i = 1; i <= size * size; i++) {
