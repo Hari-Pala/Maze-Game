@@ -5,23 +5,15 @@ let size = 3;
 let currid=1;
 let width=screen.width;
 let height=screen.height;
-console.log(height);
-console.log(width);
-let size1;
-let size2;
-if(height>=(1.5*width )){
-    size1=80;
-    size2=78;
-    size3=3;
-}
-else{
-    size1=40;
-    size2=39;
-    size3=10;
-}
-document.getElementsByClassName("buttons").style.fontSize=size3+"vw";
-document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + size1 / size + "vw)";
-document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + size1 / size + "vw)";
+document.getElementById("up").style.fontSize=(width*1.5>height ? 3:15)+"vw";
+document.getElementById("down").style.fontSize=(width*1.5>height ? 3:15)+"vw";
+document.getElementById("right").style.fontSize=(width*1.5>height ? 3:15)+"vw";
+document.getElementById("left").style.fontSize=(width*1.5>height ? 3:15)+"vw";
+document.getElementById("extra").style.fontSize=(width*1.5>height ? 3:10)+"vw";
+document.getElementById("reset").style.fontSize=(width*1.5>height ? 3:10)+"vw";
+document.getElementById("check").style.fontSize=(width*1.5>height ? 3:10)+"vw";
+document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
+document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
 for (let i = 1; i <= size * size; i++) {
     document.getElementById("main").innerHTML += '<div class="block" id="' + i + '"></div>';
 }
@@ -47,8 +39,8 @@ const reset = () => {
 
     document.getElementById((1).toString()).innerText = "S";
     document.getElementById((size * size).toString()).innerText = "E";
-    document.getElementById((1).toString()).style.fontSize = size2 / size + "vw";
-    document.getElementById((size * size).toString()).style.fontSize = size2 / size + "vw";
+    document.getElementById((1).toString()).style.fontSize = (width*1.5>height ? 39:78) / size + "vw";
+    document.getElementById((size * size).toString()).style.fontSize = (width*1.5>height ? 39:78) / size + "vw";
 
     checkmat[(blockid - 1) % size][(blockid - 1) / size] = 1;
 
@@ -189,8 +181,8 @@ document.getElementById("check").addEventListener('click', () => {
     for (let i = 1; i <= size * size; i++) {
         document.getElementById("main").innerHTML += '<div class="block" id="' + i + '"></div>';
     }
-    document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + 40 / size + "vw)";
-    document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + 40 / size + "vw)";
+    document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
+    document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
     for (let i = 1; i <= size * size; i++) {
         document.getElementById(i.toString()).addEventListener('mouseover', () => {
             document.getElementById(i.toString()).classList.add("color");
