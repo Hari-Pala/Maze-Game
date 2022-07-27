@@ -2,18 +2,18 @@
 let countwin = 0;
 let countloss = 0;
 let size = 3;
-let currid=1;
-let width=screen.width;
-let height=screen.height;
-document.getElementById("up").style.fontSize=(width*1.5>height ? 3:15)+"vw";
-document.getElementById("down").style.fontSize=(width*1.5>height ? 3:15)+"vw";
-document.getElementById("right").style.fontSize=(width*1.5>height ? 3:15)+"vw";
-document.getElementById("left").style.fontSize=(width*1.5>height ? 3:15)+"vw";
-document.getElementById("extra").style.fontSize=(width*1.5>height ? 3:8)+"vw";
-document.getElementById("reset").style.fontSize=(width*1.5>height ? 3:5)+"vw";
-document.getElementById("check").style.fontSize=(width*1.5>height ? 3:5)+"vw";
-document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
-document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
+let currid = 1;
+let width = screen.width;
+let height = screen.height;
+document.getElementById("up").style.fontSize = (width * 1.5 > height ? 3 : 15) + "vw";
+document.getElementById("down").style.fontSize = (width * 1.5 > height ? 3 : 15) + "vw";
+document.getElementById("right").style.fontSize = (width * 1.5 > height ? 3 : 15) + "vw";
+document.getElementById("left").style.fontSize = (width * 1.5 > height ? 3 : 15) + "vw";
+document.getElementById("extra").style.fontSize = (width * 1.5 > height ? 3 : 8) + "vw";
+document.getElementById("reset").style.fontSize = (width * 1.5 > height ? 3 : 5) + "vw";
+document.getElementById("check").style.fontSize = (width * 1.5 > height ? 3 : 5) + "vw";
+document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + (width * 1.5 > height ? 40 : 80) / size + "vw)";
+document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + (width * 1.5 > height ? 40 : 80) / size + "vw)";
 for (let i = 1; i <= size * size; i++) {
     document.getElementById("main").innerHTML += '<div class="block" id="' + i + '"></div>';
 }
@@ -21,26 +21,26 @@ var checkmat;
 let ans;
 let arr;
 const reset = () => {
-    let blockid = 1;
-    arr = [1];
+    let blockid = size*size;
+    arr = [size*size];
     let arrcount = 0;
     ans = [];
     let check = 1;
     checkmat = new Array(size);
-    
+
 
     for (var i = 0; i < checkmat.length; i++) {
         checkmat[i] = new Array(size).fill(0);
     }
 
     for (let i = 1; i <= size * size; i++) {
-        document.getElementById(i.toString()).style.innerHTML="";
+        document.getElementById(i.toString()).style.innerHTML = "";
     }
 
     document.getElementById((1).toString()).innerText = "S";
     document.getElementById((size * size).toString()).innerText = "E";
-    document.getElementById((1).toString()).style.fontSize = (width*1.5>height ? 39:78) / size + "vw";
-    document.getElementById((size * size).toString()).style.fontSize = (width*1.5>height ? 39:78) / size + "vw";
+    document.getElementById((1).toString()).style.fontSize = (width * 1.5 > height ? 39 : 78) / size + "vw";
+    document.getElementById((size * size).toString()).style.fontSize = (width * 1.5 > height ? 39 : 78) / size + "vw";
 
     checkmat[(blockid - 1) % size][(blockid - 1) / size] = 1;
 
@@ -101,7 +101,7 @@ const reset = () => {
             blockid = arr[arrcount - 1];
             arrcount--;
             arr.pop();
-            if (blockid == 1) {
+            if (blockid == size*size) {
                 break;
             }
             continue;
@@ -114,7 +114,7 @@ const reset = () => {
             checkmat[(blockid - 1) % size][(blockid - 1) / size] = 1;
             arr.push(blockid);
             arrcount++;
-            if ((blockid == size * size) && check) {
+            if ((blockid == 1) && check) {
                 check = 0;
                 for (let ind = 0; ind <= arrcount; ind++) {
                     ans.push(arr[ind]);
@@ -126,7 +126,7 @@ const reset = () => {
             break;
         }
     }
-    currid=1;
+    currid = 1;
     document.getElementById(currid.toString()).classList.add("color");
 }
 
@@ -181,8 +181,8 @@ document.getElementById("check").addEventListener('click', () => {
     for (let i = 1; i <= size * size; i++) {
         document.getElementById("main").innerHTML += '<div class="block" id="' + i + '"></div>';
     }
-    document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
-    document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + (width*1.5>height ? 40:80) / size + "vw)";
+    document.getElementById("main").style.gridTemplateColumns = "repeat(" + size + "," + (width * 1.5 > height ? 40 : 80) / size + "vw)";
+    document.getElementById("main").style.gridTemplateRows = "repeat(" + size + "," + (width * 1.5 > height ? 40 : 80) / size + "vw)";
     for (let i = 1; i <= size * size; i++) {
         document.getElementById(i.toString()).addEventListener('mouseover', () => {
             document.getElementById(i.toString()).classList.add("color");
@@ -194,73 +194,73 @@ document.getElementById("check").addEventListener('click', () => {
     reset();
 })
 
-const up=()=>{
-    if(currid-size>0 && document.getElementById(currid.toString()).style.borderTop==""){
-        if(document.getElementById((currid-size).toString()).classList.contains("color")){
+const up = () => {
+    if (currid - size > 0 && document.getElementById(currid.toString()).style.borderTop == "") {
+        if (document.getElementById((currid - size).toString()).classList.contains("color")) {
             document.getElementById((currid).toString()).classList.remove("color");
-            currid-=size;
+            currid -= size;
         }
-        else{
-            currid-=size;
+        else {
+            currid -= size;
             document.getElementById((currid).toString()).classList.add("color");
         }
     }
 }
-const down=()=>{
-    if(currid+size<=size*size && document.getElementById(currid.toString()).style.borderBottom==""){
-        if(document.getElementById((currid+size).toString()).classList.contains("color")){
+const down = () => {
+    if (currid + size <= size * size && document.getElementById(currid.toString()).style.borderBottom == "") {
+        if (document.getElementById((currid + size).toString()).classList.contains("color")) {
             document.getElementById((currid).toString()).classList.remove("color");
-            currid+=size;
+            currid += size;
         }
-        else{
-            currid+=size;
+        else {
+            currid += size;
             document.getElementById((currid).toString()).classList.add("color");
         }
     }
 }
-const left=()=>{
-    if(currid%size!=1 && document.getElementById(currid.toString()).style.borderLeft==""){
-        if(document.getElementById((currid-1).toString()).classList.contains("color")){
+const left = () => {
+    if (currid % size != 1 && document.getElementById(currid.toString()).style.borderLeft == "") {
+        if (document.getElementById((currid - 1).toString()).classList.contains("color")) {
             document.getElementById((currid).toString()).classList.remove("color");
-            currid-=1;
+            currid -= 1;
         }
-        else{
-            currid-=1;
+        else {
+            currid -= 1;
             document.getElementById((currid).toString()).classList.add("color");
         }
     }
 }
-const right=()=>{
-    if(currid%size!=0 && document.getElementById(currid.toString()).style.borderRight==""){
-        if(document.getElementById((currid+1).toString()).classList.contains("color")){
+const right = () => {
+    if (currid % size != 0 && document.getElementById(currid.toString()).style.borderRight == "") {
+        if (document.getElementById((currid + 1).toString()).classList.contains("color")) {
             document.getElementById((currid).toString()).classList.remove("color");
-            currid+=1;
+            currid += 1;
         }
-        else{
-            currid+=1;
+        else {
+            currid += 1;
             document.getElementById((currid).toString()).classList.add("color");
         }
     }
 }
 
-window.addEventListener('keydown',(event)=>{
-    let code=event.code;
-    if(code=="ArrowRight"){
+window.addEventListener('keydown', (event) => {
+    let code = event.code;
+    if (code == "ArrowRight") {
         right();
     }
-    if(code=="ArrowLeft"){
+    if (code == "ArrowLeft") {
         left();
     }
-    if(code=="ArrowUp"){
+    if (code == "ArrowUp") {
         up();
     }
-    if(code=="ArrowDown"){
+    if (code == "ArrowDown") {
         down();
     }
-    if(code=="Enter"){
+    if (code == "Enter") {
         document.getElementById("check").click();
     }
-    if(code=="Backspace"){
+    if (code == "Backspace") {
         document.getElementById("reset").click();
     }
 })
@@ -282,6 +282,6 @@ document.getElementById("reset").addEventListener('click', () => {
     for (let i = 1; i <= size * size; i++) {
         document.getElementById(i.toString()).classList.remove("color");
     }
-    currid=1;
+    currid = 1;
     document.getElementById(currid.toString()).classList.add("color");
 })
