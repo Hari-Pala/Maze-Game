@@ -1,1 +1,1 @@
-# Maze_Game
+# Maze-Game
